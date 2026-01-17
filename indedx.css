@@ -1,0 +1,417 @@
+/* ================================
+   GLOBAL RESET & VARIABLES
+   ================================ */
+:root {
+    --primary: #d99a76;
+    --primary-dark: #c67d5e;
+    --text-light: #7a6b63;
+    --bg-light: #faf6f0;
+    --cream: #faf6f0;
+    --peach: #f5c9a9;
+    --peach-dark: #d99a76;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ================================
+   BODY
+   ================================ */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fde8d8, #fff4ec);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.4s ease;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+}
+
+/* ================================
+   CONTAINER
+   ================================ */
+.container {
+    width: 340px;
+    padding: 32px 26px;
+    background: var(--bg-light);
+    border-radius: 22px;
+    text-align: center;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.25);
+    transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease;
+    animation: slideIn 0.6s ease-out;
+    flex: 1;
+}
+
+/* ================================
+   PROFILE
+   ================================ */
+.profile {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 25%;
+    border: 4px solid var(--primary);
+    margin-bottom: 16px;
+}
+
+/* ================================
+   TEXT
+   ================================ */
+h1 {
+    font-size: 22px;
+    margin-bottom: 6px;
+    animation: fadeInDown 0.8s ease-out 0.2s both;
+}
+
+.tagline {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 16px;
+    animation: fadeInDown 0.8s ease-out 0.3s both;
+}
+
+.bio {
+    background: rgba(212, 154, 118, 0.18);
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-light);
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+p {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 22px;
+}
+
+/* ================================
+   BUTTONS
+   ================================ */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 13px;
+    margin: 12px 0;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 14px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.btn:nth-child(4) { animation-delay: 0.5s; }
+.btn:nth-child(5) { animation-delay: 0.6s; }
+.btn:nth-child(6) { animation-delay: 0.7s; }
+.btn:nth-child(7) { animation-delay: 0.8s; }
+.btn:nth-child(8) { animation-delay: 0.9s; }
+.btn:nth-child(9) { animation-delay: 1s; }
+.btn:nth-child(10) { animation-delay: 1.1s; }
+.btn:nth-child(11) { animation-delay: 1.2s; }
+.btn:nth-child(12) { animation-delay: 1.3s; }
+
+.btn i {
+    font-size: 18px;
+}
+
+.btn:hover {
+    transform: scale(1.04) translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin: 12px 0;
+}
+
+.btn-group .btn {
+    flex: 1;
+    padding: 11px;
+    margin: 0;
+    font-size: 13px;
+}
+
+/* Brand colors */
+.linktree { background: linear-gradient(45deg, #d99a76, #c67d5e); }
+.resume   { background: linear-gradient(45deg, #c9956f, #b37d57); }
+.cv       { background: linear-gradient(45deg, #e8a87d, #d99a76); }
+.portfolio { background: linear-gradient(45deg, #d9956f, #c67d5e); }
+.linkedin { background: #d99a76; }
+.x        { background: #7a6b63; }
+.github   { background: #d99a76; }
+.instagram { background: linear-gradient(45deg, #f5c9a9, #e89476); }
+.projects { background: linear-gradient(45deg, #c67d5e, #ad6b4f); }
+.email    { background: linear-gradient(45deg, #d99a76, #e8a87d); }
+
+/* ================================
+   THEME TOGGLE BUTTON
+   ================================ */
+.theme-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--primary);
+    background: rgba(212, 154, 118, 0.15);
+    color: var(--primary);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.theme-btn:hover {
+    background: rgba(212, 154, 118, 0.25);
+    transform: scale(1.1) rotate(20deg);
+}
+
+/* ================================
+   DARK MODE
+   ================================ */
+body.dark {
+    background: linear-gradient(135deg, #1a2332, #243447);
+}
+
+body.dark .container {
+    background: linear-gradient(135deg, #2a3f52, #34495f);
+    color: #e8f0f7;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(212, 228, 247, 0.15);
+}
+
+body.dark h1 {
+    color: #f0f8ff;
+}
+
+body.dark p {
+    color: #c8d5e3;
+}
+
+body.dark .bio {
+    background: rgba(212, 154, 118, 0.15);
+    color: #c8d5e3;
+}
+
+body.dark .btn {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .btn:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* ================================
+   COUNTER STYLE
+   ================================ */
+.counter {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    font-weight: 500;
+}
+
+body.dark .counter {
+    color: #a0a0a0;
+    border-top-color: #333;
+}
+
+/* ================================
+   ANIMATIONS
+   ================================ */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.container {
+    animation: slideIn 0.6s ease-out;
+}
+
+.btn:active {
+    animation: pulse 0.3s ease;
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+@media (max-width: 480px) {
+    .container {
+        width: 90vw;
+        max-width: 340px;
+        padding: 24px 20px;
+    }
+
+    .profile {
+        width: 100px;
+        height: 100px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .btn {
+        padding: 11px;
+        font-size: 14px;
+    }
+}
+
+/* ================================
+   THEME BUTTON
+   ================================ */
+.theme-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #ffffff;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+/* ================================
+   DARK MODE (PROFESSIONAL PINK)
+   ================================ */
+body.dark {
+    background: linear-gradient(135deg, #1a0b14, #0e050a);
+}
+
+body.dark .container {
+    background: #14080f;
+    color: #f4e9ef;
+    box-shadow: 0 20px 40px rgba(236, 72, 153, 0.18);
+}
+
+body.dark h1 {
+    color: #f9a8d4;
+}
+
+body.dark p {
+    color: #e5b3cc;
+}
+
+body.dark .btn {
+    background: linear-gradient(135deg, var(--pink-primary), var(--pink-dark));
+}
+
+body.dark .theme-btn {
+    background: #f9a8d4;
+    color: #4a0d2b;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-light);
+    font-size: 12px;
+    animation: fadeInUp 1s ease-out 1.4s both;
+}
+
+.footer p {
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links a {
+    color: var(--text-light);
+    font-size: 18px;
+    transition: transform 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    color: var(--primary);
+}
+
+body.dark .footer {
+    color: #a0a0a0;
+}
+
+body.dark .social-links a {
+    color: #a0a0a0;
+}
+
+body.dark .social-links a:hover {
+    color: #e8a87d;
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+@media (max-width: 480px) {
+    .footer {
+        padding: 20px 15px;
+    }
+
+    .social-links {
+        gap: 15px;
+    }
+}
